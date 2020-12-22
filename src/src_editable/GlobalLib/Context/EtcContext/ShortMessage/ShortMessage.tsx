@@ -41,7 +41,7 @@ export const ShortMessageProvider = ({ children }: { children: ReactNode }) => {
       'instantMessageBox'
     ) as HTMLCollectionOf<HTMLDivElement>;
     for (let i = 0; i < Boxes.length; i++) {
-      Boxes[Boxes.length - i - 1].style.bottom = `${40 + 110 * i}px`;
+      Boxes[Boxes.length - i - 1].style.bottom = `${28 + 108 * i}px`;
     }
   }, [Mserise]);
 

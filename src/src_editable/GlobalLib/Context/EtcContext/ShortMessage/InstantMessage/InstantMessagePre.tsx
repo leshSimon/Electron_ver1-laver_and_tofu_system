@@ -6,7 +6,7 @@ import { FlexCenter100per } from '../../../../Styles/IteratePattern/ToCenter';
 
 const appear = keyframes`
   from{
-  left: -400px;
+  left: -320px;
   }to{
   left: 20px;
   }
@@ -15,7 +15,7 @@ const disappear = keyframes`
   from{
   left: 20px;
   }to{
-  left: -400px;
+  left: -320px;
   }
 `;
 interface BoxProps {
@@ -25,11 +25,12 @@ const Box = styled.div<BoxProps>`
   display: grid;
   grid-template-columns: 2px 1fr;
   position: fixed;
-  bottom: 40px;
-  left: -400px;
+  bottom: 28px;
+  left: -320px;
   width: 200px;
   height: 100px;
-  background-color: #fafafa;
+  background-color: rgba(250, 250, 250, 0.3);
+  color: white;
   animation: ${(p) => (p.Hide ? disappear : appear)} 0.8s
     cubic-bezier(0.02, 0.86, 0.4, 0.98) 0s 1 alternate forwards;
   z-index: 8000;
@@ -49,12 +50,11 @@ const Sbj = styled(WH100per)`
   display: flex;
   align-items: center;
   padding: 0 8px 0 8px;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 `;
 const Intent = styled(WH100per)`
-  padding: 10px;
-  font-size: 0.93rem;
-  color: #636e72;
+  padding: 8px;
+  font-size: 0.85rem;
   line-height: 1.25rem;
 `;
 const ExtinctivePrescription = styled(WH100per)`
