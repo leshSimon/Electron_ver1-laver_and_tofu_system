@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 interface GlobalStyleProps {
   theme: any;
@@ -50,5 +50,19 @@ export default createGlobalStyle<GlobalStyleProps>`
   }
   video {    
     object-fit: cover;
+  }
+  progress {
+    border: 0;
+    border-radius: 0px;
+    &::-webkit-progress-bar {
+      background-color: #dfe6e9;
+      border: 0;
+      border-radius: 0px;
+    }
+    &::-webkit-progress-value {
+      background-color: #636e72;
+      border: 0;
+      border-radius: 0px;
+    }
   }
 `;
