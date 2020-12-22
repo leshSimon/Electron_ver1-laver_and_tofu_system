@@ -1,8 +1,8 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import WH100per from "../../../../Styles/IteratePattern/WH100per";
-import { spaped } from "../../../../RecycleFunction/etc/StopAndPrevent";
-import { FlexCenter100per } from "../../../../Styles/IteratePattern/ToCenter";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import WH100per from '../../../../Styles/IteratePattern/WH100per';
+import { spaped } from '../../../../RecycleFunction/etc/StopAndPrevent';
+import { FlexCenter100per } from '../../../../Styles/IteratePattern/ToCenter';
 
 const appear = keyframes`
   from{
@@ -27,8 +27,8 @@ const Box = styled.div<BoxProps>`
   position: fixed;
   bottom: 40px;
   left: -400px;
-  width: 300px;
-  height: 150px;
+  width: 200px;
+  height: 100px;
   background-color: #fafafa;
   animation: ${(p) => (p.Hide ? disappear : appear)} 0.8s
     cubic-bezier(0.02, 0.86, 0.4, 0.98) 0s 1 alternate forwards;
@@ -104,7 +104,7 @@ const InstantMessagePre = ({
       </ExtinctivePrescription>
       <Content>
         <Header>
-          <Sbj>{Subject ? Subject : "Subject"}</Sbj>
+          <Sbj>{Subject ? Subject : 'Subject'}</Sbj>
           <Fasten>{Stop && <i className="icon-pinboard" />}</Fasten>
           <Off
             onClick={(e) => {
@@ -115,7 +115,7 @@ const InstantMessagePre = ({
             <i className="icon-noun_x_2939490" />
           </Off>
         </Header>
-        <Intent>{Message ? Message : "Message is empty"}</Intent>
+        <Intent>{Message ? Message : 'Message is empty'}</Intent>
       </Content>
     </Box>
   );

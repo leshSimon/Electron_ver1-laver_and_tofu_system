@@ -5,6 +5,7 @@ import ContextApply from './src_editable/Routes/AppRoot/ContextApply';
 import Helmet from 'react-helmet';
 import dotenv from 'dotenv';
 import path from 'path';
+import './src_editable/GlobalLib/Assets/fontello-ac053006/css/fontello.css';
 
 dotenv.config({ path: path.join(__dirname, '/.env') });
 

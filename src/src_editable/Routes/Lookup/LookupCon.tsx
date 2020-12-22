@@ -4,7 +4,8 @@ import Excel from 'exceljs/excel';
 // import Excel from "exceljs";
 import { PrismaClient } from '@prisma/client';
 import WH100per from '../../GlobalLib/Styles/IteratePattern/WH100per';
-import path from 'path';
+import ExcelLocation from '../../GlobalLib/Assets/excel/ExcelLocation';
+import { useShortMessage } from '../../GlobalLib/Context/EtcContext/ShortMessage/ShortMessage';
 
 const prisma = new PrismaClient();
 
@@ -23,31 +24,36 @@ const Button = styled.div`
 `;
 
 const StartingMain = () => {
-  const ExcelFileLocation = path.join(
-    __dirname,
-    '/src_editable/GlobalLib/Assets/excel/테스트.xlsx'
-  );
+  const { addMessage } = useShortMessage();
   const execute = async () => {
     try {
-      console.log(ExcelFileLocation);
+      console.log(ExcelLocation);
       const workbook = new Excel.Workbook();
-      const file = await workbook.xlsx.readFile(ExcelFileLocation);
+      const file = await workbook.xlsx.readFile(ExcelLocation);
       const worksheet = file.getWorksheet('시험대');
       worksheet.getCell(5, 5).value = 'foo3';
       const fic = worksheet.getCell(5, 5).value;
       console.log(fic);
-      await workbook.xlsx.writeFile(ExcelFileLocation);
+      await workbook.xlsx.writeFile(ExcelLocation);
     } catch (e) {
       console.log(e);
     }
   };
-  const dbSet = async () => {};
+  const dbSet = async () => {
+    // await prisma.business_unit.create({
+    //   data: {
+    //     start_date: new Date('2015-1-1'),
+    //     name: '김 사업단',
+    //   },
+    // });
+    addMessage('쿠헬헬', 'ㄹㄹ');
+  };
 
   return (
     <Background>
       <Button
         onClick={() => {
-          execute();
+          dbSet();
         }}
       >
         실행 입력

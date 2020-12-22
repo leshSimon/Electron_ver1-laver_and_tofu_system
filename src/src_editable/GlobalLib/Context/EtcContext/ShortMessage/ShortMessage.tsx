@@ -4,10 +4,10 @@ import React, {
   useContext,
   useState,
   useEffect,
-} from "react";
-import InstantMessageCon from "./InstantMessage/InstantMessageCon";
-import cryptoRandomString from "crypto-random-string";
-import { useDummyState } from "../../Lib/DummyState";
+} from 'react';
+import InstantMessageCon from './InstantMessage/InstantMessageCon';
+import cryptoRandomString from 'crypto-random-string';
+import { useDummyState } from '../../Lib/DummyState';
 
 interface ShortMessageContextType {
   addMessage: (Subject: string, Message: string) => void;
@@ -18,7 +18,7 @@ const ShortMessageContext = createContext<ShortMessageContextType | undefined>(
 export const ShortMessageProvider = ({ children }: { children: ReactNode }) => {
   const { setDummyState } = useDummyState();
   const [Mserise, setMserise] = useState<string[][]>([]);
-  const [DeleteTarget, setDeleteTarget] = useState("");
+  const [DeleteTarget, setDeleteTarget] = useState('');
   const addMessage = (Subject: string, Message: string) => {
     const arr = Mserise.concat([
       [cryptoRandomString({ length: 20 }), Subject, Message],
@@ -38,10 +38,10 @@ export const ShortMessageProvider = ({ children }: { children: ReactNode }) => {
   }, [DeleteTarget]);
   useEffect(() => {
     const Boxes = document.getElementsByClassName(
-      "instantMessageBox"
+      'instantMessageBox'
     ) as HTMLCollectionOf<HTMLDivElement>;
     for (let i = 0; i < Boxes.length; i++) {
-      Boxes[Boxes.length - i - 1].style.bottom = `${40 + 160 * i}px`;
+      Boxes[Boxes.length - i - 1].style.bottom = `${40 + 110 * i}px`;
     }
   }, [Mserise]);
 
@@ -65,6 +65,6 @@ export const ShortMessageProvider = ({ children }: { children: ReactNode }) => {
 
 export const useShortMessage = () => {
   const state = useContext(ShortMessageContext);
-  if (!state) throw new Error("ShortMessageContext not found");
+  if (!state) throw new Error('ShortMessageContext not found');
   return state;
 };

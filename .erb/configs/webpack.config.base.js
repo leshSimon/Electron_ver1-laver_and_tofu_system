@@ -43,4 +43,6 @@ export default {
       NODE_ENV: 'production',
     }),
   ],
+
+  target: 'electron-renderer',
 };

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import SideBarCon from "../../Components/SideBar/SideBarCon";
-import Router from "./Router";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import SideBarCon from '../../Components/SideBar/SideBarCon';
+import Router from './Router';
 
 const Wrapper = styled.div`
   display: grid;
@@ -13,10 +13,10 @@ const Wrapper = styled.div`
 `;
 
 const App = () => {
-  const [Mode, setMode] = useState("LookupCon");
+  const [Mode, setMode] = useState('LookUp');
   return (
     <Wrapper>
-      <SideBarCon />
+      <SideBarCon Mode={Mode} setMode={setMode} />
       <Router Mode={Mode} />
     </Wrapper>
   );
