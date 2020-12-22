@@ -3,6 +3,10 @@ import { render } from 'react-dom';
 import './src_editable/GlobalLib/Styles/GlobalStyle/GlobalStyles.scss';
 import ContextApply from './src_editable/Routes/AppRoot/ContextApply';
 import Helmet from 'react-helmet';
+import dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({ path: path.join(__dirname, '/.env') });
 
 render(
   <>

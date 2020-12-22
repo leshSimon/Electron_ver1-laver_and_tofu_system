@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-// import * as sqlite3 from 'sqlite3';
 import Excel from 'exceljs/excel';
+// import Excel from "exceljs";
 import { PrismaClient } from '@prisma/client';
 import WH100per from '../../GlobalLib/Styles/IteratePattern/WH100per';
-import { ExcelFileLocation } from '../../GlobalLib/RecycleFunction/etc/ExcelFileLocation';
-// import Excel from "exceljs";
+import path from 'path';
 
 const prisma = new PrismaClient();
 
@@ -24,38 +23,25 @@ const Button = styled.div`
 `;
 
 const StartingMain = () => {
+  const ExcelFileLocation = path.join(
+    __dirname,
+    '/src_editable/GlobalLib/Assets/excel/테스트.xlsx'
+  );
   const execute = async () => {
     try {
-      console.log(ExcelFileLocation());
+      console.log(ExcelFileLocation);
       const workbook = new Excel.Workbook();
-      const file = await workbook.xlsx.readFile(ExcelFileLocation());
+      const file = await workbook.xlsx.readFile(ExcelFileLocation);
       const worksheet = file.getWorksheet('시험대');
       worksheet.getCell(5, 5).value = 'foo3';
       const fic = worksheet.getCell(5, 5).value;
       console.log(fic);
-      await workbook.xlsx.writeFile(ExcelFileLocation());
+      await workbook.xlsx.writeFile(ExcelFileLocation);
     } catch (e) {
       console.log(e);
     }
   };
   const dbSet = async () => {};
-  const dbSet2 = () => {
-    // let db = new sqlite3.Database(
-    //   "D:/프로그래밍 자료/Desktop App/Electron_ver1-laver_and_tofu_system/src/GlobalLib/Assets/db/chinook.db",
-    //   (err: any) => {
-    //     if (err) {
-    //       console.error(err.message);
-    //     }
-    //     console.log("Connected to the chinook database.");
-    //   }
-    // );
-    // db.close((err: any) => {
-    //   if (err) {
-    //     return console.error(err.message);
-    //   }
-    //   console.log("Close the database connection.");
-    // });
-  };
 
   return (
     <Background>

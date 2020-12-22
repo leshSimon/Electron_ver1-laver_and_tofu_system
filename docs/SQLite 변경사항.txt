@@ -1,0 +1,69 @@
+CREATE TABLE "business_unit" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"start_date"	date NOT NULL,
+	"end_date"	date DEFAULT NULL,
+	"name"	varchar(45) NOT NULL,
+	PRIMARY KEY("id")
+);
+CREATE TABLE "unit_price" (
+	"id"	INTEGER NOT NULL,
+	"goodsId"	INTEGER NOT NULL,
+	"price"	INTEGER NOT NULL,
+	PRIMARY KEY("id")
+);
+CREATE TABLE "goods" (
+	"id"	INTEGER NOT NULL,
+	"release_date"	date NOT NULL,
+	"discarded_date"	date DEFAULT NULL,
+	"name"	TEXT DEFAULT NULL,
+	"business_unit_Id"	INTEGER NOT NULL,
+	"unit_price_Id"	INTEGER NOT NULL,
+	CONSTRAINT "business_unit" FOREIGN KEY("business_unit_Id") REFERENCES "business_unit"("id"),
+	CONSTRAINT "unit_price" FOREIGN KEY("unit_price_Id") REFERENCES "unit_price"("id") ON UPDATE CASCADE,
+	PRIMARY KEY("id")
+);
+CREATE TABLE "material" (
+	"id"	INTEGER NOT NULL,
+	"name"	varchar(70) NOT NULL,
+	"unit"	varchar(45) NOT NULL,
+	"business_unit_id"	INTEGER NOT NULL,
+	CONSTRAINT "business_unit_for_material" FOREIGN KEY("business_unit_id") REFERENCES "business_unit"("id"),
+	PRIMARY KEY("id")
+);
+CREATE TABLE "material_input_and_output" (
+	"id"	INTEGER NOT NULL,
+	"date"	date NOT NULL,
+	"material_id"	INTEGER NOT NULL,
+	"inventory"	INTEGER NOT NULL DEFAULT '0',
+	"added"	INTEGER NOT NULL DEFAULT '0',
+	CONSTRAINT "material_kinds" FOREIGN KEY("material_id") REFERENCES "material"("id"),
+	PRIMARY KEY("id")
+);
+CREATE TABLE "payment_method" (
+	"id"	INTEGER NOT NULL,
+	"name"	varchar(45) NOT NULL,
+	PRIMARY KEY("id")
+);
+CREATE TABLE "product" (
+	"id"	INTEGER NOT NULL,
+	"date"	datetime NOT NULL,
+	"goods_id"	INTEGER NOT NULL,
+	"Inventory"	INTEGER NOT NULL,
+	"output"	INTEGER NOT NULL,
+	CONSTRAINT "goods_for_product" FOREIGN KEY("goods_id") REFERENCES "goods"("id"),
+	PRIMARY KEY("id")
+);
+CREATE TABLE "selling" (
+	"id"	INTEGER NOT NULL,
+	"date"	date NOT NULL,
+	"goods_id"	INTEGER NOT NULL,
+	"consumer"	varchar(60) NOT NULL,
+	"quantity"	INTEGER NOT NULL,
+	"supply_price"	INTEGER NOT NULL,
+	"payment_date"	datetime DEFAULT NULL,
+	"payment_method_id"	INTEGER NOT NULL,
+	"remark"	varchar(200) DEFAULT NULL,
+	CONSTRAINT "goods" FOREIGN KEY("goods_id") REFERENCES "goods"("id") ON UPDATE CASCADE,
+	CONSTRAINT "payment_method" FOREIGN KEY("payment_method_id") REFERENCES "payment_method"("id") ON UPDATE CASCADE,
+	PRIMARY KEY("id")
+);

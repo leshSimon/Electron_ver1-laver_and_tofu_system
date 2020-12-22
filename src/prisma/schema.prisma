@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -27,9 +27,6 @@ model goods {
   unit_price       unit_price    @relation(fields: [unit_price_Id], references: [id])
   product          product[]
   selling          selling[]
-
-  @@index([business_unit_Id], name: "business_unit_idx")
-  @@index([unit_price_Id], name: "unit_price_idx")
 }
 
 model material {
@@ -39,8 +36,6 @@ model material {
   business_unit_id          Int
   business_unit             business_unit               @relation(fields: [business_unit_id], references: [id])
   material_input_and_output material_input_and_output[]
-
-  @@index([business_unit_id], name: "business_unit_for_material_idx")
 }
 
 model material_input_and_output {
@@ -48,10 +43,8 @@ model material_input_and_output {
   date        DateTime
   material_id Int
   inventory   Int      @default(0)
-  add         Int      @default(0)
+  added       Int      @default(0)
   material    material @relation(fields: [material_id], references: [id])
-
-  @@index([material_id], name: "material_kinds_idx")
 }
 
 model payment_method {
@@ -67,8 +60,6 @@ model product {
   Inventory Int
   output    Int
   goods     goods    @relation(fields: [goods_id], references: [id])
-
-  @@index([goods_id], name: "goods_for_product_idx")
 }
 
 model selling {
@@ -83,9 +74,6 @@ model selling {
   remark            String?
   goods             goods          @relation(fields: [goods_id], references: [id])
   payment_method    payment_method @relation(fields: [payment_method_id], references: [id])
-
-  @@index([goods_id], name: "goods_idx")
-  @@index([payment_method_id], name: "payment_method_idx")
 }
 
 model unit_price {

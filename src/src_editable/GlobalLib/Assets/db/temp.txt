@@ -1,7 +1,0 @@
-CREATE TABLE `business_unit` (
-  `id` mediumint unsigned NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-)
