@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model business_unit {
+  id         Int        @id @default(autoincrement())
+  start_date DateTime
+  end_date   DateTime?
+  name       String
+  goods      goods[]
+  material   material[]
+}
+
+model goods {
+  id               Int           @id @default(autoincrement())
+  release_date     DateTime
+  discarded_date   DateTime?
+  name             String?
+  business_unit_Id Int
+  unit_price_Id    Int
+  business_unit    business_unit @relation(fields: [business_unit_Id], references: [id])
+  unit_price       unit_price    @relation(fields: [unit_price_Id], references: [id])
+  product          product[]
+  selling          selling[]
+
+  @@index([business_unit_Id], name: "business_unit_idx")
+  @@index([unit_price_Id], name: "unit_price_idx")
+}
+
+model material {
+  id                        Int                         @id @default(autoincrement())
+  name                      String
+  unit                      String
+  business_unit_id          Int
+  business_unit             business_unit               @relation(fields: [business_unit_id], references: [id])
+  material_input_and_output material_input_and_output[]
+
+  @@index([business_unit_id], name: "business_unit_for_material_idx")
+}
+
+model material_input_and_output {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  material_id Int
+  inventory   Int      @default(0)
+  add         Int      @default(0)
+  material    material @relation(fields: [material_id], references: [id])
+
+  @@index([material_id], name: "material_kinds_idx")
+}
+
+model payment_method {
+  id      Int       @id @default(autoincrement())
+  name    String
+  selling selling[]
+}
+
+model product {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  goods_id  Int
+  Inventory Int
+  output    Int
+  goods     goods    @relation(fields: [goods_id], references: [id])
+
+  @@index([goods_id], name: "goods_for_product_idx")
+}
+
+model selling {
+  id                Int            @id @default(autoincrement())
+  date              DateTime
+  goods_id          Int
+  consumer          String
+  quantity          Int
+  supply_price      Int
+  payment_date      DateTime?
+  payment_method_id Int
+  remark            String?
+  goods             goods          @relation(fields: [goods_id], references: [id])
+  payment_method    payment_method @relation(fields: [payment_method_id], references: [id])
+
+  @@index([goods_id], name: "goods_idx")
+  @@index([payment_method_id], name: "payment_method_idx")
+}
+
+model unit_price {
+  id      Int     @id @default(autoincrement())
+  goodsId Int
+  price   Int
+  goods   goods[]
+}
