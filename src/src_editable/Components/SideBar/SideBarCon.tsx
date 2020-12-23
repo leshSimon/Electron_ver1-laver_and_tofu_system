@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import WH100per, {
-  W100per,
-} from '../../GlobalLib/Styles/IteratePattern/WH100per';
+import { W100per } from '../../GlobalLib/Styles/IteratePattern/WH100per';
 import SidebarMenu from './SidebarMenu/SidebarMenu';
 
-const Pence = styled(WH100per)`
+const Pence = styled.div`
   display: flex;
   flex-direction: column;
+  position: fixed;
   background-color: #262626;
+  width: 180px;
+  height: 100vh;
 `;
 const Title = styled(W100per)`
   display: flex;

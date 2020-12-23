@@ -17,6 +17,7 @@ const App = () => {
   return (
     <Wrapper>
       <SideBarCon Mode={Mode} setMode={setMode} />
+      <div />
       <Router Mode={Mode} />
     </Wrapper>
   );

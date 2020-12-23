@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { NOrU } from "../etc/type_convert";
+import { useState, useRef, useEffect } from 'react';
+import { NOrU } from '../etc/type_convert';
 
 export default (
   targetElement: HTMLElement = document.body,
@@ -53,7 +53,6 @@ export default (
           return getScrollTop() + window.innerHeight > getDocumentHeight() - 50;
         }
       };
-      console.log(getScrollTop());
       if (TriggerJudgment()) {
         if (OnlyOnce.current) {
           setList((a) => {
@@ -69,9 +68,9 @@ export default (
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", LoadMore);
+    window.addEventListener('scroll', LoadMore);
     return () => {
-      window.removeEventListener("scroll", LoadMore);
+      window.removeEventListener('scroll', LoadMore);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
