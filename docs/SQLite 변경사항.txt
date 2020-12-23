@@ -9,6 +9,7 @@ CREATE TABLE "unit_price" (
 	"id"	INTEGER NOT NULL,
 	"goodsId"	INTEGER NOT NULL,
 	"price"	INTEGER NOT NULL,
+	"start_date"	date NOT NULL,
 	PRIMARY KEY("id")
 );
 CREATE TABLE "goods" (
@@ -34,10 +35,10 @@ CREATE TABLE "material_input_and_output" (
 	"id"	INTEGER NOT NULL,
 	"date"	date NOT NULL,
 	"material_id"	INTEGER NOT NULL,
-	"inventory"	INTEGER NOT NULL DEFAULT '0',
-	"added"	INTEGER NOT NULL DEFAULT '0',
-	CONSTRAINT "material_kinds" FOREIGN KEY("material_id") REFERENCES "material"("id"),
-	PRIMARY KEY("id")
+	"inventory"	float NOT NULL DEFAULT '0',
+	"added"	float NOT NULL DEFAULT '0',
+	PRIMARY KEY("id"),
+	CONSTRAINT "material_kinds" FOREIGN KEY("material_id") REFERENCES "material"("id")
 );
 CREATE TABLE "payment_method" (
 	"id"	INTEGER NOT NULL,

@@ -1,0 +1,26 @@
+
+      console.log(ExcelLocation);
+      const workbook = new Excel.Workbook();
+      const file = await workbook.xlsx.readFile(ExcelLocation);
+      const worksheet = file.getWorksheet('재료 수불');
+      let row = 2;
+      while (worksheet.getCell(row, 1).value) {
+        const dateComb =
+          String(worksheet.getCell(row, 2).value) +
+          '-' +
+          String(worksheet.getCell(row, 3).value) +
+          '-' +
+          String(worksheet.getCell(row, 4).value);
+        await prisma.material_input_and_output.create({
+          data: {
+            date: new Date(dateComb),
+            material: {
+              connect: { id: worksheet.getCell(row, 5).value },
+            },
+            inventory: worksheet.getCell(row, 6).value,
+            added: worksheet.getCell(row, 7).value,
+          },
+        });
+        row = row + 1;
+      await workbook.xlsx.writeFile(ExcelLocation);
+      }

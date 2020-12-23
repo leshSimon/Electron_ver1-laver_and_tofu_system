@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import WH100per, {
   W100per,
 } from '../../GlobalLib/Styles/IteratePattern/WH100per';

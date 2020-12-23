@@ -42,8 +42,8 @@ model material_input_and_output {
   id          Int      @id @default(autoincrement())
   date        DateTime
   material_id Int
-  inventory   Int      @default(0)
-  added       Int      @default(0)
+  inventory   Float    @default(0)
+  added       Float    @default(0)
   material    material @relation(fields: [material_id], references: [id])
 }
 
@@ -77,8 +77,9 @@ model selling {
 }
 
 model unit_price {
-  id      Int     @id @default(autoincrement())
-  goodsId Int
-  price   Int
-  goods   goods[]
+  id         Int      @id @default(autoincrement())
+  goodsId    Int
+  price      Int
+  start_date DateTime
+  goods      goods[]
 }
