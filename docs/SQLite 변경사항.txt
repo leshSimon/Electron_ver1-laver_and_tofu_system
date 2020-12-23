@@ -33,10 +33,10 @@ CREATE TABLE "material" (
 );
 CREATE TABLE "material_input_and_output" (
 	"id"	INTEGER NOT NULL,
-	"date"	date NOT NULL,
+	"date"	INTEGER NOT NULL,
 	"material_id"	INTEGER NOT NULL,
-	"inventory"	float NOT NULL DEFAULT '0',
-	"added"	float NOT NULL DEFAULT '0',
+	"inventory"	REAL NOT NULL DEFAULT '0',
+	"added"	REAL NOT NULL DEFAULT '0',
 	PRIMARY KEY("id"),
 	CONSTRAINT "material_kinds" FOREIGN KEY("material_id") REFERENCES "material"("id")
 );
@@ -47,16 +47,16 @@ CREATE TABLE "payment_method" (
 );
 CREATE TABLE "product" (
 	"id"	INTEGER NOT NULL,
-	"date"	datetime NOT NULL,
+	"date"	INTEGER NOT NULL,
 	"goods_id"	INTEGER NOT NULL,
 	"Inventory"	INTEGER NOT NULL,
 	"output"	INTEGER NOT NULL,
-	CONSTRAINT "goods_for_product" FOREIGN KEY("goods_id") REFERENCES "goods"("id"),
-	PRIMARY KEY("id")
+	PRIMARY KEY("id"),
+	CONSTRAINT "goods_for_product" FOREIGN KEY("goods_id") REFERENCES "goods"("id")
 );
 CREATE TABLE "selling" (
 	"id"	INTEGER NOT NULL,
-	"date"	date NOT NULL,
+	"date"	INTEGER NOT NULL,
 	"goods_id"	INTEGER NOT NULL,
 	"consumer"	varchar(60) NOT NULL,
 	"quantity"	INTEGER NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE "selling" (
 	"payment_date"	datetime DEFAULT NULL,
 	"payment_method_id"	INTEGER NOT NULL,
 	"remark"	varchar(200) DEFAULT NULL,
+	PRIMARY KEY("id"),
 	CONSTRAINT "goods" FOREIGN KEY("goods_id") REFERENCES "goods"("id") ON UPDATE CASCADE,
-	CONSTRAINT "payment_method" FOREIGN KEY("payment_method_id") REFERENCES "payment_method"("id") ON UPDATE CASCADE,
-	PRIMARY KEY("id")
+	CONSTRAINT "payment_method" FOREIGN KEY("payment_method_id") REFERENCES "payment_method"("id") ON UPDATE CASCADE
 );

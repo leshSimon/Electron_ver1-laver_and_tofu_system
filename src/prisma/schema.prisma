@@ -40,7 +40,7 @@ model material {
 
 model material_input_and_output {
   id          Int      @id @default(autoincrement())
-  date        DateTime
+  date        Int
   material_id Int
   inventory   Float    @default(0)
   added       Float    @default(0)
@@ -54,17 +54,17 @@ model payment_method {
 }
 
 model product {
-  id        Int      @id @default(autoincrement())
-  date      DateTime
+  id        Int   @id @default(autoincrement())
+  date      Int
   goods_id  Int
   Inventory Int
   output    Int
-  goods     goods    @relation(fields: [goods_id], references: [id])
+  goods     goods @relation(fields: [goods_id], references: [id])
 }
 
 model selling {
   id                Int            @id @default(autoincrement())
-  date              DateTime
+  date              Int
   goods_id          Int
   consumer          String
   quantity          Int
