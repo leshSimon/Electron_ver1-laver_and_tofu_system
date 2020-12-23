@@ -14,7 +14,9 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["cross-env NODE_ENV=development eslint --cache"],
+    "*.{js,jsx,ts,tsx}": [
+      "cross-env NODE_ENV=development eslint --cache"
+    ],
     "{*.json,.{babelrc,eslintrc,prettierrc}}": [
       "prettier --ignore-path .eslintignore --parser json --write"
     ],
@@ -38,7 +40,9 @@
     ],
     "afterSign": ".erb/scripts/Notarize.js",
     "mac": {
-      "target": ["dmg"],
+      "target": [
+        "dmg"
+      ],
       "type": "distribution",
       "hardenedRuntime": true,
       "entitlements": "assets/entitlements.mac.plist",
@@ -60,10 +64,14 @@
       ]
     },
     "win": {
-      "target": ["portable"]
+      "target": [
+        "portable"
+      ]
     },
     "linux": {
-      "target": ["AppImage"],
+      "target": [
+        "AppImage"
+      ],
       "category": "Development"
     },
     "directories": {
@@ -71,7 +79,9 @@
       "buildResources": "assets",
       "output": "release"
     },
-    "extraResources": ["./assets/**"],
+    "extraResources": [
+      "./assets/**"
+    ],
     "publish": {
       "provider": "github"
     }
@@ -119,9 +129,20 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/.erb/mocks/fileMock.js",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
-    "moduleFileExtensions": ["js", "jsx", "ts", "tsx", "json"],
-    "moduleDirectories": ["node_modules", "src/node_modules"],
-    "setupFiles": ["./.erb/scripts/CheckBuildsExist.js"]
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src/node_modules"
+    ],
+    "setupFiles": [
+      "./.erb/scripts/CheckBuildsExist.js"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -186,7 +207,6 @@
     "enzyme-adapter-react-16": "^1.15.3",
     "enzyme-to-json": "^3.5.0",
     "file-loader": "^6.0.0",
-    "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
@@ -240,7 +260,10 @@
   "prettier": {
     "overrides": [
       {
-        "files": [".prettierrc", ".babelrc"],
+        "files": [
+          ".prettierrc",
+          ".babelrc"
+        ],
         "options": {
           "parser": "json"
         }
@@ -249,8 +272,12 @@
     "singleQuote": true
   },
   "renovate": {
-    "extends": ["bliss"],
-    "baseBranches": ["next"]
+    "extends": [
+      "bliss"
+    ],
+    "baseBranches": [
+      "next"
+    ]
   },
   "husky": {
     "hooks": {

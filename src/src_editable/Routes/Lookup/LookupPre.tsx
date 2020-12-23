@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import WH100per from '../../GlobalLib/Styles/IteratePattern/WH100per';
 import ConditionCon from './Condition/ConditionCon';
 import { LookupOptionType } from './LookupCon';
-import MaterialTableCon from './Tables/MaterialTable/MaterialTableCon';
-import ProductTableCon from './Tables/ProductTable/ProductTableCon';
-import SellingTableCon from './Tables/SellingTable/SellingTableCon';
+// import MaterialTableCon from './Tables/MaterialTable/MaterialTableCon';
+// import ProductTableCon from './Tables/ProductTable/ProductTableCon';
+// import SellingTableCon from './Tables/SellingTable/SellingTableCon';
 
 const Background = styled(WH100per)`
   display: flex;
@@ -25,13 +25,13 @@ const LookupPre = ({ Setting }: LookupPreProps) => {
     <Background>
       <ConditionCon Setting={Setting} />
       <Table>
-        {Setting.target === 'selling' ? (
+        {/* {Setting.target === 'selling' ? (
           <SellingTableCon Setting={Setting} />
         ) : Setting.target === 'material' ? (
           <MaterialTableCon Setting={Setting} />
         ) : (
           <ProductTableCon Setting={Setting} />
-        )}
+        )} */}
       </Table>
     </Background>
   );
