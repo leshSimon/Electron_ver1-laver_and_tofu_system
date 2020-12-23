@@ -27,13 +27,17 @@ export interface LookupOptionType {
 export type lookUpType =
   | selling[]
   | material_input_and_output[]
-  | product[]
+  | (product & {
+      goods: {
+        name: string | null;
+      };
+    })[]
   | null
   | undefined;
 
 const LookupCon = () => {
   const prisma = usePrisma();
-  const [Setting, setSetting] = useState({
+  const [Setting, setSetting] = useState<LookupOptionType>({
     target: 'product',
     businessUnit: 0,
     startDate: {
@@ -94,6 +98,7 @@ const LookupCon = () => {
         JsonDataSet = await prisma.product.findMany({
           where,
           orderBy,
+          include: { goods: { select: { name: true } } },
         });
     }
     setJsonData(JsonDataSet);

@@ -22,3 +22,15 @@ export const DateIntoNumber = (year: number, month: number, day: number) => {
   const vertToString = String(year) + '-' + String(month) + '-' + String(day);
   return Number(new Date(vertToString));
 };
+
+export const NumberIntoDate = (number: number) => {
+  const dateObj = new Date(number);
+  const str =
+    String(dateObj.getFullYear()) +
+    '. ' +
+    String(dateObj.getMonth()) +
+    '. ' +
+    String(dateObj.getDate()) +
+    '.';
+  return str;
+};

@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   grid-template-columns: 180px 1fr;
   color: white;
   background-color: #333333;
-  width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
 `;
 
 const App = () => {
