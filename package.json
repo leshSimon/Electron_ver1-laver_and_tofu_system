@@ -15,9 +15,7 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "cross-env NODE_ENV=development eslint --cache"
-    ],
+    "*.{js,jsx,ts,tsx}": ["cross-env NODE_ENV=development eslint --cache"],
     "{*.json,.{babelrc,eslintrc,prettierrc}}": [
       "prettier --ignore-path .eslintignore --parser json --write"
     ],
@@ -41,9 +39,7 @@
     ],
     "afterSign": ".erb/scripts/Notarize.js",
     "mac": {
-      "target": [
-        "dmg"
-      ],
+      "target": ["dmg"],
       "type": "distribution",
       "hardenedRuntime": true,
       "entitlements": "assets/entitlements.mac.plist",
@@ -65,14 +61,10 @@
       ]
     },
     "win": {
-      "target": [
-        "nsis"
-      ]
+      "target": ["nsis"]
     },
     "linux": {
-      "target": [
-        "AppImage"
-      ],
+      "target": ["AppImage"],
       "category": "Development"
     },
     "directories": {
@@ -80,9 +72,7 @@
       "buildResources": "assets",
       "output": "release"
     },
-    "extraResources": [
-      "./assets/**"
-    ],
+    "extraResources": ["./assets/**"],
     "publish": {
       "provider": "github",
       "owner": "electron-react-boilerplate",
@@ -132,20 +122,9 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/.erb/mocks/fileMock.js",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx",
-      "json"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "src/node_modules"
-    ],
-    "setupFiles": [
-      "./.erb/scripts/CheckBuildsExist.js"
-    ]
+    "moduleFileExtensions": ["js", "jsx", "ts", "tsx", "json"],
+    "moduleDirectories": ["node_modules", "src/node_modules"],
+    "setupFiles": ["./.erb/scripts/CheckBuildsExist.js"]
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -264,10 +243,7 @@
   "prettier": {
     "overrides": [
       {
-        "files": [
-          ".prettierrc",
-          ".babelrc"
-        ],
+        "files": [".prettierrc", ".babelrc"],
         "options": {
           "parser": "json"
         }
@@ -276,16 +252,12 @@
     "singleQuote": true
   },
   "renovate": {
-    "extends": [
-      "bliss"
-    ],
-    "baseBranches": [
-      "next"
-    ]
+    "extends": ["bliss"],
+    "baseBranches": ["next"]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npx lint-staged"
     }
   }
 }

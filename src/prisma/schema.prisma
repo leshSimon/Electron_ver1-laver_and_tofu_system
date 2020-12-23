@@ -18,9 +18,9 @@ model business_unit {
 
 model goods {
   id               Int           @id @default(autoincrement())
-  release_date     DateTime
-  discarded_date   DateTime?
-  name             String?
+  release_date     Int
+  discarded_date   Int?
+  name             String
   business_unit_Id Int
   unit_price_Id    Int
   business_unit    business_unit @relation(fields: [business_unit_Id], references: [id])
@@ -69,7 +69,7 @@ model selling {
   consumer          String
   quantity          Int
   supply_price      Int
-  payment_date      DateTime?
+  payment_date      Int?
   payment_method_id Int
   remark            String?
   goods             goods          @relation(fields: [goods_id], references: [id])
