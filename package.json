@@ -1,7 +1,6 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Fast Refresh for rapid application development",
+  "name": "laver_and_tofu",
+  "productName": "Lavertu",
   "scripts": {
     "build": "concurrently \"yarn build:main\" \"yarn build:renderer\"",
     "build:main": "cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.main.prod.babel.js",
@@ -27,7 +26,7 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
+    "productName": "Lavertu",
     "appId": "org.erb.ElectronReact",
     "files": [
       "dist/",
@@ -61,7 +60,7 @@
       ]
     },
     "win": {
-      "target": ["nsis"]
+      "target": ["portable"]
     },
     "linux": {
       "target": ["AppImage"],
@@ -74,9 +73,7 @@
     },
     "extraResources": ["./assets/**"],
     "publish": {
-      "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "provider": "github"
     }
   },
   "repository": {
