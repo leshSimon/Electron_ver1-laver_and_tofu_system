@@ -2,6 +2,7 @@
  * Base webpack config used across other specific configs
  */
 
+import copyWebpackPlugin from 'copy-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
 import { dependencies as externals } from '../../src/package.json';
@@ -42,6 +43,15 @@ export default {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
+    // new copyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.join(__dirname, '../../src/node_modules/@prisma/engines'),
+    //       to: './release/win-unpacked',
+    //       force: true,
+    //     },
+    //   ],
+    // }),
   ],
 
   target: 'electron-renderer',
