@@ -28,6 +28,7 @@
     ]
   },
   "build": {
+    "asar": false,
     "productName": "Lavertu",
     "appId": "org.erb.ElectronReact",
     "files": [
@@ -82,8 +83,7 @@
       "output": "release"
     },
     "extraResources": [
-      "./assets/**",
-      "./src/Assets/ExternalFile/**"
+      "./assets/**"
     ],
     "publish": {
       "provider": "github"
