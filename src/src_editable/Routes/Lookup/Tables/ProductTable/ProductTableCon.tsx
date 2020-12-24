@@ -10,6 +10,7 @@ const ProductTableCon = ({ Setting }: ProductTableConProps) => {
   const { List, Finish } = useInfiniteScroll();
 
   return <ProductTablePre List={List} Finish={Finish} Setting={Setting} />;
+  // return <div>{String(__dirname) + ' - ' + String(__filename)}</div>;
 };
 
 export default ProductTableCon;
