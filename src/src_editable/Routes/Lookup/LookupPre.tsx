@@ -4,8 +4,8 @@ import WH100per from '../../GlobalLib/Styles/IteratePattern/WH100per';
 import ConditionCon from './Condition/ConditionCon';
 import { LookupOptionType } from './LookupCon';
 // import MaterialTableCon from './Tables/MaterialTable/MaterialTableCon';
-// import ProductTableCon from './Tables/ProductTable/ProductTableCon';
 // import SellingTableCon from './Tables/SellingTable/SellingTableCon';
+import ProductTableCon from './Tables/ProductTable/ProductTableCon';
 
 const Background = styled(WH100per)`
   display: flex;
@@ -32,6 +32,7 @@ const LookupPre = ({ Setting }: LookupPreProps) => {
         ) : (
           <ProductTableCon Setting={Setting} />
         )} */}
+        <ProductTableCon Setting={Setting} />
       </Table>
     </Background>
   );

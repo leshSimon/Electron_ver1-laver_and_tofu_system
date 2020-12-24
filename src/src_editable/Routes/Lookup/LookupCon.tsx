@@ -18,7 +18,7 @@ export interface LookupOptionType {
 }
 const LookupCon = () => {
   const [Setting, setSetting] = useState<LookupOptionType>({
-    target: 'material',
+    target: 'product',
     businessUnit: 0,
     startDate: {
       year: 2020,
