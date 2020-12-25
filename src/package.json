@@ -16,7 +16,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "2.13.0"
+    "@prisma/client": "2.13.0",
+    "typeorm": "^0.2.29"
   },
   "devDependencies": {
     "@prisma/cli": "2.13.0"
